@@ -1,4 +1,3 @@
-//��ȡ��ǰIP��ַ���������ʶ
 function getBrowserInfo() {
     var agent = navigator.userAgent.toLowerCase();
 
@@ -31,6 +30,6 @@ function getBrowserInfo() {
 var ip_content = document.querySelector(".ip_content");
 
 if (ip_content != null && typeof (returnCitySN) != undefined) {
-    ip_content.innerHTML = '��ӭ���� <span class="p red">' + returnCitySN["cname"] + "</span> ��С���<br>" + "����IPΪ�� <span class='p cyan'>" + returnCitySN["cip"] + "</span><br>������汾��<span class='p blue'>" + getBrowserInfo() + '</span>';
+    ip_content.innerHTML = '欢迎来自 <span class="p red">' + returnCitySN["cname"] + "</span> 的小伙伴<br>" + "访问IP为： <span class='p cyan'>" + returnCitySN["cip"] + "</span><br>浏览器版本：<span class='p blue'>" + getBrowserInfo() + '</span>';
 }
 
