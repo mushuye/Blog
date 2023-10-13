@@ -27,7 +27,7 @@ function getBrowserInfo() {
         return agent.match(regStr_saf);
     }
 }
-var returnCitySN= http://ip-api.com/json
+var returnCitySN= {http://ip-api.com/json}
 var ip_content = document.querySelector(".ip_content");
 
 if (ip_content != null && typeof (returnCitySN) != undefined) {
