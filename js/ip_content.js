@@ -29,22 +29,13 @@ function getBrowserInfo() {
 }
 
 var ip_content = document.querySelector(".ip_content");
-var apiURL = fetch('https://ipapi.co/json').then(response => response.json());
-var addURL = 'https://whois.pconline.com.cn/ip.jsp'.then(response => response.json());
+var apiURL = 'https://ip.useragentinfo.com/json?';
 
 fetch(apiURL)
   .then(response => response.json())
   .then(returnCitySN => {
     if (ip_content != null) {
-      ip_content.innerHTML = '欢迎来自 <span class="p red">' + iaddressData + returnCitySN.city + "</span> 的小伙伴<br>访问IP为： <span class='p cyan'>" + returnCitySN.ip + "</span><br>浏览器版本：<span class='p blue'>" + getBrowserInfo() + '</span>';
-    }
-  })
-  .catch(error => console.error('获取数据时出错: ' + error));
-
-Promise.all([apiURL, addURL])
-  .then(([returnCitySN, addness]) => {
-    if (ip_content != null) {
-      ip_content.innerHTML = '欢迎来自 <span class="p red">' + addness + returnCitySN.city + "</span> 的小伙伴<br>访问IP为： <span class='p cyan'>" + returnCitySN.ip + "</span><br>浏览器版本：<span class='p blue'>" + getBrowserInfo() + '</span>';
+      ip_content.innerHTML = '欢迎来自 <span class="p red">' + returnCitySN.province + returnCitySN.city + "</span> 的小伙伴<br>访问IP为： <span class='p cyan'>" + returnCitySN.ip + "</span><br>浏览器版本：<span class='p blue'>" + getBrowserInfo() + '</span>';
     }
   })
   .catch(error => console.error('获取数据时出错: ' + error));
