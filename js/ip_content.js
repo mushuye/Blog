@@ -29,8 +29,14 @@ function getBrowserInfo() {
 }
 
 var ip_content = document.querySelector(".ip_content");
-var returnCitySN = 'http://ip-api.com/json'
-if (ip_content != null && typeof (returnCitySN) != undefined) {
-    ip_content.innerHTML = '欢迎来自 <span class="p red">' + returnCitySN.regionName + returnCitySN["city"] + "</span> 的小伙伴<br>" + "访问IP为： <span class='p cyan'>" + returnCitySN["query"] + "</span><br>浏览器版本：<span class='p blue'>" + getBrowserInfo() + '</span>';
-}
+var apiURL = 'http://ip-api.com/json';
+
+fetch(apiURL)
+  .then(response => response.json())
+  .then(returnCitySN => {
+    if (ip_content != null) {
+      ip_content.innerHTML = '欢迎来自 <span class="p red">' + returnCitySN.regionName + returnCitySN.city + "</span> 的小伙伴<br>访问IP为： <span class='p cyan'>" + returnCitySN.query + "</span><br>浏览器版本：<span class='p blue'>" + getBrowserInfo() + '</span>';
+    }
+  })
+  .catch(error => console.error('获取数据时出错: ' + error));
 
